@@ -9,6 +9,14 @@
 - Журнал исследования: [practice/journal.md](practice/journal.md)
 - Материалы по диссертации (статья, теория, требования кафедры): [materials/](materials/)
 
+## Модули
+
+| Модуль | Тема | Ноутбук | Ветка |
+|---|---|---|---|
+| 0–1 | Colab, видеокарта, изображение как числа, первый запуск YOLO, почему готовая модель не видит скот с дрона | [module-01-colab-yolo.ipynb](practice/notebooks/module-01-colab-yolo.ipynb) · [открыть в Colab](https://colab.research.google.com/github/temir8173/magistr/blob/main/practice/notebooks/module-01-colab-yolo.ipynb) | `module-1` |
+
+Для модуля 0–1 понадобятся учебные снимки из [practice/data/samples/](practice/data/samples/).
+
 ---
 
 ## 1. Установка (Windows, один раз)
