@@ -1,0 +1,35 @@
+# Презентации — большие файлы, храним вне Git
+*.pptx
+
+# Служебные файлы Windows и Word
+*:Zone.Identifier
+~$*
+Thumbs.db
+desktop.ini
+
+# Личные настройки Claude Code руководителя (не для автора)
+CLAUDE.local.md
+.claude/settings.local.json
+
+# Данные и модели — на Google Drive, не в Git
+datasets/
+practice/data/raw/
+practice/data/processed/
+*.pt
+*.onnx
+*.engine
+*.tflite
+*_ncnn_model/
+runs/
+*.zip
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Редакторы
+.vscode/
+.idea/
