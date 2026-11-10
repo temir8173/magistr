@@ -13,7 +13,7 @@
 
 | Модуль | Тема | Ноутбук | Ветка |
 |---|---|---|---|
-| 0–1 | Colab, видеокарта, изображение как числа, первый запуск YOLO, почему готовая модель не видит скот с дрона | [module-01-colab-yolo.ipynb](practice/notebooks/module-01-colab-yolo.ipynb) · [открыть в Colab](https://colab.research.google.com/github/temir8173/magistr/blob/main/practice/notebooks/module-01-colab-yolo.ipynb) | `module-1` |
+| 0–1 | облачная видеокарта, изображение как числа, первый запуск YOLO, почему готовая модель не видит скот с дрона | [module-01-intro-yolo.ipynb](practice/notebooks/module-01-intro-yolo.ipynb) · [в Colab](https://colab.research.google.com/github/temir8173/magistr/blob/main/practice/notebooks/module-01-intro-yolo.ipynb) | `module-1` |
 
 Для модуля 0–1 понадобятся учебные снимки из [practice/data/samples/](practice/data/samples/).
 
@@ -21,8 +21,9 @@
 
 ## 1. Установка (Windows, один раз)
 
-WSL и Docker **не нужны**. Нейросети обучаются в Google Colab (в браузере),
-на компьютере нужен только лёгкий набор программ.
+WSL и Docker **не нужны**. Нейросети обучаются в облаке через браузер
+(Kaggle, запасной вариант — Google Colab), на компьютере нужен только лёгкий
+набор программ.
 
 ### 1.1 Git
 1. Скачать и установить: https://git-scm.com/download/win
@@ -64,12 +65,25 @@ Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
 ```
 и повторить активацию.
 
-### 1.6 Google-аккаунт
-Нужен для **Google Colab** (бесплатная видеокарта для обучения) и
-**Google Drive** (там будут храниться датасеты и обученные модели — они
-слишком большие для GitHub).
+### 1.6 Kaggle — основная площадка для обучения
+Kaggle (kaggle.com, принадлежит Google) даёт бесплатную видеокарту примерно
+на **30 часов в неделю** (точный остаток виден в профиле), сессию до 12 часов
+и умеет обучать модель **в фоне при закрытом браузере**.
 
-### 1.7 Claude Code (по желанию)
+1. Зарегистрироваться на https://www.kaggle.com (можно через Google-аккаунт).
+2. **Подтвердить номер телефона:** аватар → *Settings* → *Phone verification*.
+   Без этого Kaggle не даёт видеокарту и интернет в ноутбуке.
+3. Сообщить руководителю свой логин Kaggle — через Kaggle будем делиться
+   общим датасетом коров и овец (начиная с модуля 2).
+
+Датасеты и обученные модели храним на Kaggle (приватные датасеты): в GitHub
+они не помещаются.
+
+### 1.7 Google Colab — запасная площадка
+Нужен только обычный Google-аккаунт. Бесплатная видеокарта в Colab выдаётся
+не всегда — пользуемся им, если Kaggle недоступен или закончилась недельная квота.
+
+### 1.8 Claude Code (по желанию)
 Помощник-наставник прямо в VS Code или терминале. Нужна подписка Claude.
 Установка: https://docs.claude.com/en/docs/claude-code/setup
 
@@ -86,7 +100,7 @@ Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
         ↓
 Автор: git pull → новая ветка module-N
         ↓
-Автор: ноутбук в Colab → журнал → ответы на вопросы → результаты
+Автор: ноутбук на Kaggle → журнал → ответы на вопросы → результаты
         ↓
 Автор: commit → push → Pull Request
         ↓
@@ -105,16 +119,38 @@ git pull
 git checkout -b module-1
 ```
 
-### 2.2 Работа с ноутбуком в Colab
-- **Открыть:** https://colab.research.google.com → *File → Open notebook* →
-  вкладка **GitHub** → поставить галочку *Include private repos* →
-  выбрать `temir8173/magistr`, ветку `module-N`, нужный ноутбук.
-- **Включить видеокарту:** *Runtime → Change runtime type → T4 GPU*.
-- **Сохранить обратно:** *File → Save a copy in GitHub* → тот же репозиторий,
-  ветка `module-N`, тот же путь к файлу. После этого на компьютере сделать
-  `git pull`.
-- Другой вариант: *File → Download → .ipynb* и положить файл в
-  `practice/notebooks/` вручную.
+### 2.2 Где запускать ноутбук
+
+Ноутбуки сами определяют, где запущены, и работают в любом из трёх мест.
+
+**Kaggle (основной вариант)**
+1. https://www.kaggle.com → *Create* → **New Notebook**.
+2. *File* → **Import Notebook** → загрузить файл `.ipynb` из своей копии
+   репозитория (`practice/notebooks/...`).
+3. Правая панель *Session options*: **Accelerator → GPU T4 x2** (или P100),
+   **Internet → On**.
+4. Если модулю нужны файлы (например, учебные снимки) — правая панель *Input* →
+   **Upload** → *New Dataset* → выбрать файлы. Подробности — в самом ноутбуке.
+5. Когда закончили: *File* → **Download notebook** → заменить им файл в
+   `practice/notebooks/` своей ветки. Файлы результатов скачиваются из панели
+   *Output*.
+6. Для долгого обучения (с модуля 4): *Save Version* → **Save & Run All (Commit)** —
+   ноутбук выполнится в фоне, браузер можно закрыть. Результаты будут
+   в разделе *Output* этой версии.
+7. Неиспользуемую сессию останавливайте (кнопка ⏻ вверху): квота видеокарты
+   тратится, пока сессия включена, даже если ничего не считается.
+
+**Google Colab (запасной)**
+- Открыть ноутбук по ссылке «в Colab» из таблицы модулей (для приватного
+  репозитория Colab один раз попросит доступ к GitHub) или загрузить файл:
+  *File → Upload notebook*.
+- Видеокарта: *Runtime → Change runtime type → T4 GPU*.
+- Сохранить: *File → Download → .ipynb* → заменить файл в `practice/notebooks/`.
+
+**Свой компьютер (VS Code)**
+- Открыть `.ipynb` в VS Code → справа вверху *Select Kernel* → выбрать `.venv`.
+- Подходит для модулей без обучения (0–1, прототип, экономика). Обучение на
+  ноутбуке без видеокарты NVIDIA будет очень долгим.
 
 ### 2.3 Что сдаётся по каждому модулю
 | Что | Куда |
@@ -139,7 +175,7 @@ git push -u origin module-N
 
 ## 3. Что НЕ кладём в Git
 
-- датасеты и обученные модели (`*.pt`, `*.onnx`) — на Google Drive;
+- датасеты и обученные модели (`*.pt`, `*.onnx`) — на Kaggle (приватные датасеты);
 - презентации `*.pptx` — передаём отдельно;
 - папку `.venv` и служебные файлы.
 
@@ -160,8 +196,8 @@ magistr/
     PLAN.md            ← план практической части
     journal.md         ← журнал исследования (ведёт автор)
     answers/           ← ответы на контрольные вопросы по модулям
-    notebooks/         ← ноутбуки Colab
-    data/              ← описание данных (сами данные — на Drive)
+    notebooks/         ← ноутбуки (Kaggle / Colab / локально)
+    data/              ← учебные образцы и описание данных (сами данные — на Kaggle)
     results/           ← таблицы, графики, примеры детекций
     app/               ← прототип Streamlit
     economics/         ← экономический расчёт
