@@ -41,6 +41,8 @@ WSL и Docker **не нужны**. Нейросети обучаются в об
 ### 1.3 Python 3.12
 1. Скачать с https://www.python.org/downloads/windows/
 2. **При установке обязательно поставить галочку «Add python.exe to PATH».**
+   Нужна версия **3.10 или новее** (рекомендуется 3.12): на более старых
+   библиотеки из `requirements.txt` не установятся.
 3. Проверить в новом окне PowerShell:
    ```powershell
    python --version
