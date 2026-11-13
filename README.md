@@ -7,6 +7,7 @@
 
 - План практической части: [practice/PLAN.md](practice/PLAN.md)
 - Журнал исследования: [practice/journal.md](practice/journal.md)
+- Учебные заметки (объяснения понятий): [practice/notes/](practice/notes/)
 - Материалы по диссертации (статья, теория, требования кафедры): [materials/](materials/)
 
 ## Модули
@@ -197,6 +198,7 @@ magistr/
   practice/
     PLAN.md            ← план практической части
     journal.md         ← журнал исследования (ведёт автор)
+    notes/             ← учебные заметки: объяснения понятий
     answers/           ← ответы на контрольные вопросы по модулям
     notebooks/         ← ноутбуки (Kaggle / Colab / локально)
     data/              ← учебные образцы и описание данных (сами данные — на Kaggle)
