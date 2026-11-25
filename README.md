@@ -134,9 +134,9 @@ git checkout -b module-1
    **Internet → On**.
 4. Если модулю нужны файлы (например, учебные снимки) — правая панель *Input* →
    **Upload** → *New Dataset* → выбрать файлы. Подробности — в самом ноутбуке.
-5. Когда закончили: *File* → **Download notebook** → заменить им файл в
-   `practice/notebooks/` своей ветки. Файлы результатов скачиваются из панели
-   *Output*.
+5. Когда закончили: *File* → **Download notebook** → сохранить в своей ветке
+   отдельным файлом `practice/results/module-N/module-0N-executed.ipynb`
+   (см. п. 2.3). Файлы результатов скачиваются из панели *Output*.
 6. Для долгого обучения (с модуля 4): *Save Version* → **Save & Run All (Commit)** —
    ноутбук выполнится в фоне, браузер можно закрыть. Результаты будут
    в разделе *Output* этой версии.
@@ -148,7 +148,8 @@ git checkout -b module-1
   репозитория Colab один раз попросит доступ к GitHub) или загрузить файл:
   *File → Upload notebook*.
 - Видеокарта: *Runtime → Change runtime type → T4 GPU*.
-- Сохранить: *File → Download → .ipynb* → заменить файл в `practice/notebooks/`.
+- Сохранить: *File → Download → .ipynb* → положить как
+  `practice/results/module-N/module-0N-executed.ipynb` (см. п. 2.3).
 
 **Свой компьютер (VS Code)**
 - Открыть `.ipynb` в VS Code → справа вверху *Select Kernel* → выбрать `.venv`.
@@ -158,10 +159,15 @@ git checkout -b module-1
 ### 2.3 Что сдаётся по каждому модулю
 | Что | Куда |
 |---|---|
-| Выполненный ноутбук (с результатами запуска) | `practice/notebooks/` |
+| Выполненный ноутбук (с результатами запуска) | `practice/results/module-N/module-0N-executed.ipynb` |
 | Запись в журнале исследования | `practice/journal.md` |
 | Ответы на контрольные вопросы | `practice/answers/module-N.md` (шаблон: `_template.md`) |
 | Таблицы, графики, примеры (если есть) | `practice/results/module-N/` |
+
+Исходные ноутбуки в `practice/notebooks/` **не заменяйте** выполненными.
+Руководитель их обновляет, и если в вашей ветке тот же файл изменён, при
+`git merge main` возникнет конфликт, который в ноутбуке почти невозможно
+разрешить вручную.
 
 ### 2.4 Отправить на проверку
 ```powershell
